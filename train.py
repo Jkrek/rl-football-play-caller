@@ -1,19 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 28 15:15:19 2025
-
-@author: Jared.Krekeler
-"""
-
 from stable_baselines3 import DQN
 from stable_baselines3.common.env_checker import check_env
 from env.football_env import FootballPlayCallerEnv
+from visual_callback import VisualizationCallback
 
 # Create and check the environment
 env = FootballPlayCallerEnv()
 check_env(env, warn=True)
 
-# Instantiate the agent
+# Set up the agent
 model = DQN(
     "MlpPolicy",
     env,
@@ -28,8 +22,11 @@ model = DQN(
     verbose=1,
 )
 
-# Train the agent
-model.learn(total_timesteps=10000)
+# Add the callback for drawing and saving a GIF
+callback = VisualizationCallback(verbose=1, gif_output="episode_1_play.gif")
+
+# Train the agent with visualization
+model.learn(total_timesteps=10000, callback=callback)
 
 # Save the model
 model.save("dqn_football_playcaller")

@@ -41,16 +41,11 @@ class FootballPlayCallerEnv(gym.Env):
         self.play_count = 0
         self.max_plays = 30
 
-        self.state = np.array([
-            self.down,
-            self.distance_to_first,
-            self.yards_to_goal,
-            self.field_position,
-            self.score_diff
-        ], dtype=np.float32)
+        self._update_state()  # ✅ ensure state is consistent
 
         self.done = False
         return self.state, {}
+
 
     def step(self, action):
         reward = 0
@@ -112,12 +107,13 @@ class FootballPlayCallerEnv(gym.Env):
 
     def _update_state(self):
         self.state = np.array([
-            self.down,
-            self.distance_to_first,
-            max(0, self.yards_to_goal),
-            min(100, self.field_position),
-            self.score_diff
-        ], dtype=np.float32)
+        min(4, self.down),
+        min(10, self.distance_to_first),
+        min(100, max(0, self.yards_to_goal)),
+        min(100, max(0, self.field_position)),
+        max(-100, min(100, self.score_diff))
+    ], dtype=np.float32)
+
 
     def render(self):
         print(f"Down: {self.down}, Distance: {self.distance_to_first}, "
