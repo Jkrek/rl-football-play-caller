@@ -23,6 +23,7 @@ The use of Gym environments to simulate realistic decision trees for agents.
 Basic reward engineering to teach the agent strategy (score, convert, don’t turn over the ball).
 
 🛠 Technologies Used
+
 Python
 
 Gymnasium (custom environment)
