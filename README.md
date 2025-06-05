@@ -3,6 +3,7 @@
 RL Football Play-Calling Bot is a machine learning simulation that trains an AI agent to call offensive plays in a football game using real NFL data. It combines reinforcement learning, custom Gym environments, and a statistical play outcome model trained on play-by-play data from the NFL (2020–2023). This is an intersection between my technical interests and my hobby(football)!
 
 🧠 Project Overview
+
 The AI agent learns to choose between:
 Run, Short Pass, Deep Pass, Field Goal, or Punt.
 
@@ -14,6 +15,7 @@ Instead of using random outcomes, the simulation pulls realistic yardage results
 The model is trained using Stable-Baselines3 with a Deep Q-Network (DQN), and episodes are visualized using an animated GIF that captures each play the agent calls.
 
 🔬 What This Project Demonstrates
+
 How reinforcement learning can be used to replicate decision-making in sports.
 
 How real-world data (via nfl_data_py) can enhance the quality of RL environments.
