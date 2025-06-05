@@ -4,48 +4,67 @@ import os
 import imageio
 
 
-def draw_play(yardline_start, action, yards_gained, step=None, save=False, folder="frames"):
+def draw_play(
+    yardline_start,
+    action,
+    yards_gained,
+    step,
+    down,
+    distance,
+    score_team,
+    score_opp,
+    possession,
+    save=False,
+    folder="frames",
+    reset=False
+):
     """
-    Visualizes a single football play on a horizontal football field.
+    Visualizes a single football play on a horizontal football field with contextual overlays.
     """
-
     yardline_end = yardline_start + yards_gained
 
-    # Create plot
-    fig, ax = plt.subplots(figsize=(10, 2))
+    fig, ax = plt.subplots(figsize=(10, 3))
     ax.set_xlim(0, 100)
-    ax.set_ylim(0, 1)
-    ax.axis('off')
+    ax.set_ylim(0, 10)
+    ax.axis("off")
 
-    # Draw field gridlines
-    for i in range(0, 101, 10):
-        ax.axvline(i, color='gray', linestyle='--', linewidth=0.5)
-        ax.text(i, 0.5, str(i), va='center', ha='center', fontsize=8)
+    # Draw field
+    field = patches.Rectangle((0, 0), 100, 10, linewidth=1, edgecolor='green', facecolor='lightgreen')
+    ax.add_patch(field)
 
-    # Draw arrow for play
-    ax.add_patch(patches.FancyArrow(
-        yardline_start, 0.5, yards_gained, 0,
-        width=0.1,
-        length_includes_head=True,
-        head_width=0.2,
-        head_length=2,
-        color='green' if yards_gained >= 0 else 'red'
-    ))
+    # Yard markers
+    for yd in range(10, 100, 10):
+        ax.text(yd, 9, str(yd), ha='center', va='center', fontsize=8, color='gray')
 
-    # Add text annotations
-    ax.text(50, 0.9, f"Action: {action}", ha='center', fontsize=10, fontweight='bold')
-    ax.text(50, 0.1, f"Start: {yardline_start} | Gained: {yards_gained} | End: {yardline_end}",
-            ha='center', fontsize=9)
+    # Line of scrimmage
+    ax.axvline(x=yardline_start, color='blue', linestyle='--', lw=2)
+    ax.text(yardline_start, 1, "LOS", rotation=90, verticalalignment='bottom', fontsize=8, color='blue')
 
-    plt.tight_layout()
+    # Arrow for yards gained
+    ax.annotate(
+        "",
+        xy=(yardline_end, 5),
+        xytext=(yardline_start, 5),
+        arrowprops=dict(facecolor='red', shrink=0.05, width=2, headwidth=8),
+    )
+    ax.text((yardline_start + yardline_end) / 2, 5.7, f"{yards_gained:.1f} yds", ha="center", fontsize=9)
+
+    # Top info: Step, Action, Score, Possession
+    ax.text(1, 9.2, f"Step {step}", fontsize=9, weight="bold")
+    ax.text(20, 9.2, f"Action: {action}", fontsize=9)
+    ax.text(55, 9.2, f"Down: {down}, Distance: {distance}", fontsize=9)
+    ax.text(80, 9.2, f"Score: {score_team} - {score_opp}", fontsize=9)
+    ax.text(95, 9.2, f"Poss: {possession}", fontsize=9, ha='right')
+
+    if reset:
+        ax.text(50, 1, "New Possession", ha='center', fontsize=11, color='purple', weight='bold')
 
     if save:
         os.makedirs(folder, exist_ok=True)
-        filename = os.path.join(folder, f"step_{step}.png")
-        plt.savefig(filename)
-        plt.close()
-    else:
-        plt.show()
+        filename = os.path.join(folder, f"frame_{step:04d}.png")
+        plt.savefig(filename, bbox_inches="tight")
+
+    plt.close(fig)
 
 
 def make_gif(folder="frames", filename="play_simulation.gif", duration=0.5):

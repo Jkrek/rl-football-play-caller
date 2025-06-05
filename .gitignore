@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs and temporary files
+frames/
+*.log
+
+# Model files (optional if big)
+*.zip
+
+# Data files (optional if large)
+*.csv
