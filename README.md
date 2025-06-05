@@ -37,6 +37,7 @@ Matplotlib (for visualization)
 Pandas / NumPy (data processing)
 
 📈 Room for Expansion
+
 This simulation can be made more advanced by:
 
 Adding game clock and timeout logic
