@@ -24,6 +24,8 @@ def draw_play(
     yardline_end = yardline_start + yards_gained
 
     fig, ax = plt.subplots(figsize=(10, 3))
+    fig.set_size_inches(10, 3)
+    fig.set_dpi(100)
     ax.set_xlim(0, 100)
     ax.set_ylim(0, 10)
     ax.axis("off")
@@ -62,7 +64,8 @@ def draw_play(
     if save:
         os.makedirs(folder, exist_ok=True)
         filename = os.path.join(folder, f"frame_{step:04d}.png")
-        plt.savefig(filename, bbox_inches="tight")
+        plt.savefig(filename, bbox_inches=None)
+
 
     plt.close(fig)
 

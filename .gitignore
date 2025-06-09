@@ -5,9 +5,20 @@ __pycache__/
 # Logs and temporary files
 frames/
 *.log
-
+#envs
+.env/
+venv/
+*.env
 # Model files (optional if big)
 *.zip
 
 # Data files (optional if large)
 *.csv
+
+.DS_Store
+
+frames/
+.ipynb_checkpoints/
+
+.vscode/
+.idea/
