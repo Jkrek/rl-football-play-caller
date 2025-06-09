@@ -1,4 +1,7 @@
 🏈 RL Football Play-Calling Bot
+## 🏈 Live Demo
+
+![Football Play Simulation](https://github.com/Jkrek/rl-football-play-caller/blob/main/episode_1_play.gif?raw=true)
 
 RL Football Play-Calling Bot is a machine learning simulation that trains an AI agent to call offensive plays in a football game using real NFL data. It combines reinforcement learning, custom Gym environments, and a statistical play outcome model trained on play-by-play data from the NFL (2020–2023). This is an intersection between my technical interests and my hobby(football)!
 
