@@ -1,4 +1,4 @@
-🏈 RL Football Play-Calling Bot
+# 🏈 RL Football Play-Calling Bot
 ## 🏈 Live Demo
 
 ![Football Play Simulation](https://github.com/Jkrek/rl-football-play-caller/blob/main/episode_1_play.gif?raw=true)
