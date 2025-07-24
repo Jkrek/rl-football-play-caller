@@ -43,13 +43,13 @@ Basic reward engineering to teach the agent strategy (score, convert, don’t tu
 
 ## 📈 Room for Expansion
 
-This simulation can be made more advanced by:
+- This simulation can be made more advanced by:
 
-Adding game clock and timeout logic
+- Adding game clock and timeout logic
 
-Introducing defensive modeling
+- Introducing defensive modeling
 
-Including formations or player-level detail
+- Including formations or player-level detail
 
-Comparing agent decisions to real NFL team playcalling
+- Comparing agent decisions to real NFL team playcalling
 
