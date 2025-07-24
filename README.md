@@ -29,17 +29,17 @@ Basic reward engineering to teach the agent strategy (score, convert, don’t tu
 
 ## 🛠 Technologies Used
 
-Python
+- Python
 
-Gymnasium (custom environment)
+- Gymnasium (custom environment)
 
-Stable-Baselines3 (DQN)
+- Stable-Baselines3 (DQN)
 
-nfl_data_py + NFLFastR dataset
+- nfl_data_py + NFLFastR dataset
 
-Matplotlib (for visualization)
+- Matplotlib (for visualization)
 
-Pandas / NumPy (data processing)
+- Pandas / NumPy (data processing)
 
 ## 📈 Room for Expansion
 
